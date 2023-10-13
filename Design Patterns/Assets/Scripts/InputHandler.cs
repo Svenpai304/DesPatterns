@@ -4,7 +4,14 @@ using UnityEngine;
 
 public class InputHandler
 {
+    public static InputHandler Instance { get; private set; }
+
     public Dictionary<KeyCode, ICommand> KeyCommands = new Dictionary<KeyCode, ICommand>();
+
+    public InputHandler()
+    {
+        Instance = this;
+    }
 
     public void AddCommand(KeyCode keyCode, ICommand command)
     {
@@ -16,7 +23,7 @@ public class InputHandler
 
     public void RemoveCommand(KeyCode keyCode)
     {
-        if(KeyCommands.ContainsKey(keyCode))
+        if (KeyCommands.ContainsKey(keyCode))
         {
             KeyCommands.Remove(keyCode);
         }
@@ -25,7 +32,7 @@ public class InputHandler
     public void HandleInput()
     {
         List<ICommand> usedCommands = new List<ICommand>();
-        foreach(var command in KeyCommands)
+        foreach (var command in KeyCommands)
         {
             if (Input.GetKeyDown(command.Key) && !usedCommands.Contains(command.Value))
             {

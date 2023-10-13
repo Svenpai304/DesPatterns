@@ -2,13 +2,13 @@ using UnityEngine;
 
 public class Weapon : MonoBehaviour, IFireable
 {
-    private ProjectilePool pool;
+    private ObjectPool pool;
     [SerializeField] private GameObject projectilePrefab;
     [SerializeField] private float projectileSpeed;
 
     public void Start()
     {
-        pool = new ProjectilePool(projectilePrefab, 20);
+        pool = new ObjectPool(projectilePrefab, 20);
     }
 
     public void Fire(ITargetable target)

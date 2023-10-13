@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class Target : MonoBehaviour, ITargetable
+public class Target : MonoBehaviour, ITargetable, IDamageable
 {
     public Vector3 Position { get => transform.position; }
     public Vector3 Velocity { get => transform.position - previousPos; }
@@ -15,4 +15,9 @@ public class Target : MonoBehaviour, ITargetable
     }
 
     public void OnTargeted() { }
+
+    public void TakeDamage(int damage)
+    {
+        Debug.Log($"Target hit: {damage} damage");
+    }
 }

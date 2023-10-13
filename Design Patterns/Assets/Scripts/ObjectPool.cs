@@ -3,14 +3,14 @@ using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
 
-public class ProjectilePool
+public class ObjectPool
 {
     private List<IPoolable> _activePool = new List<IPoolable>();
     private List<IPoolable> _inactivePool = new List<IPoolable>();
     private int maxCapacity;
     private GameObject prefab;
 
-    public ProjectilePool(GameObject _prefab, int _maxCapacity)
+    public ObjectPool(GameObject _prefab, int _maxCapacity)
     {
         prefab = _prefab;
         maxCapacity = _maxCapacity;

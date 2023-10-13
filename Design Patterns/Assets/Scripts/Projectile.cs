@@ -3,7 +3,7 @@ using UnityEngine;
 public class Projectile : MonoBehaviour, IPoolable
 {
     public bool Active { get; set; }
-    public ProjectilePool Pool { get; set; }
+    public ObjectPool Pool { get; set; }
     public GameObject GameObject { get => gameObject; }
 
     private Vector3 direction;
@@ -44,8 +44,8 @@ public class Projectile : MonoBehaviour, IPoolable
         IDamageable damageable = collision.gameObject.GetComponent<IDamageable>();
         if(damageable != null)
         {
-            Pool.DeactivateObject(this);
             damageable.TakeDamage(1);
+            Pool.DeactivateObject(this);
         }
     }
 }

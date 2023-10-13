@@ -44,8 +44,8 @@ public class Projectile : MonoBehaviour, IPoolable
         IDamageable damageable = collision.gameObject.GetComponent<IDamageable>();
         if(damageable != null)
         {
-            Pool.DeactivateObject(this);
             damageable.TakeDamage(1);
+            Pool.DeactivateObject(this);
         }
     }
 }
